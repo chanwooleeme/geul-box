@@ -1,0 +1,17 @@
+definitions:
+  GeulReportRequest:
+    type: object
+    required:
+      - reportReasonType
+    properties:
+      reportReasonType:
+        type: string
+        enum:
+          - PROMOTION
+          - SPAM
+          - DIRTY
+          - OBSCENITY
+          - PRIVACY_LEAK
+          - CUSTOM
+      reportCustomReason:
+        type: string

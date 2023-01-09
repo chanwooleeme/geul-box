@@ -1,0 +1,21 @@
+v1.1:
+  get:
+    tags:
+      - "User Nickname APIs"
+    summary: "별명 중복 검사"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "nickname"
+        in: path
+        required: true
+        type: string
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "성공"
+        schema:
+          $ref: "model.yml#/definitions/NicknameAlreadyExistResponse"
+      "500":
+        description: "서버측 에러"

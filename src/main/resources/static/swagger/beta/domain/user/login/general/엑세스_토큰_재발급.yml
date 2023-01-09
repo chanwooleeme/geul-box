@@ -1,0 +1,56 @@
+post:
+  tags:
+    - "General User Login APIs"
+  summary: "리프레시 토큰을 통해 엑세스 토큰 재발급"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "Bearer refreshToken"
+      required: true
+      type: "string"
+  produces:
+    - "application/json"
+  responses:
+    "200":
+      description: "재발급 성공"
+      schema:
+        $ref: "model.yml#/definitions/AccessTokenFromRefreshTokenResponse"
+    "400":
+      description: "토큰이 비어있습니다."
+    "401":
+      description: "유효하지 않은 refresh token 입니다."
+    "402":
+      description: "Refresh token이 만료됐습니다."
+    "500":
+      description: "서버측 에러"
+
+v1.2:
+  post:
+    tags:
+      - "General User Login APIs"
+    summary: "리프레시 토큰을 통해 엑세스 토큰 재발급"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "Authorization"
+        in: "header"
+        description: "Bearer refreshToken"
+        required: true
+        type: "string"
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "재발급 성공"
+        schema:
+          $ref: "model.yml#/definitions/AccessTokenFromRefreshTokenResponse"
+      "400":
+        description: "토큰이 비어있습니다."
+      "402":
+        description: "Refresh token이 만료됐습니다."
+      "411":
+        description: "유효하지 않은 refresh token 입니다."
+      "500":
+        description: "서버측 에러"

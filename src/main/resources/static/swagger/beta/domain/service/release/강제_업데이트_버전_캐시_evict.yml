@@ -1,0 +1,12 @@
+v1.3:
+  put:
+    tags:
+      - "Release Version APIs"
+    summary: "강제 업데이트 버전 캐시 evict"
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "조회 성공"
+      "500":
+        description: "서버측 에러"

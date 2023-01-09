@@ -1,0 +1,49 @@
+post:
+  tags:
+    - "Reaction APIs"
+  summary: "공감 하기"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "Bearer token"
+      required: true
+      type: "string"
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL, KAKAO, APPLE ]
+    - name: "geulNo"
+      in: "path"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "공감 성공"
+    "500":
+      description: "서버측 에러"
+
+delete:
+  tags:
+    - "Reaction APIs"
+  summary: "공감 취소 하기"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "Bearer token"
+      required: true
+      type: "string"
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL, KAKAO, APPLE ]
+    - name: "geulNo"
+      in: "path"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "공감 취소 성공"
+    "500":
+      description: "서버측 에러"

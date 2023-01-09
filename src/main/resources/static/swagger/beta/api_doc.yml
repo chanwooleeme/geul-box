@@ -1,0 +1,192 @@
+swagger: "2.0"
+info:
+  version: "1.4.0"
+  title: "글을 담다 API"
+host: "localhost:8080"
+schemes:
+  - "http"
+
+tags:
+  - name: "Service Status APIs"
+    description: "서비스 상태 API 목록"
+  - name: "Geul Search APIs"
+    description: "글 조회 API 목록"
+  - name: "Geul ETC APIs"
+    description: "글 기타 API 목록"
+  - name: "Profile APIs"
+    description: "프로필 API 목록"
+  - name: "General User Login APIs"
+    description: "일반 회원 로그인 API 목록"
+  - name: "Third-party User Login APIs"
+    description: "서드파티 회원 로그인 API 목록"
+  - name: "User Join APIs"
+    description: "회원가입 API 목록"
+  - name: "User Withdrawal APIs"
+    description: "회원탈퇴 API 목록"
+  - name: "User Nickname APIs"
+    description: "회원 별명 API 목록"
+  - name: "Password Initialization APIs"
+    description: "비밀번호 초기화 API 목록"
+  - name: "Release Version APIs"
+    description: "Release Version API 목록"
+  - name: "Reaction APIs"
+    description: "공감 API 목록"
+  - name: "Report APIs"
+    description: "신고 API 목록"
+
+paths:
+  ###서비스 상태 API 목록###
+  #서비스 상태 조회
+  /v1.1/service-status:
+    $ref: './domain/service/status/서비스상태.yml'
+
+  ###글 조회 API 목록###
+  #글 상세조회
+  /geuls/{geulNo}:
+    $ref: './domain/geul/search/글_상세조회.yml'
+
+  #월별 글을 작성한 일자 목록 조회
+  /users/{userNo}/days-geul-count-of-month:
+    $ref: './domain/geul/search/월별_글_작성일자_목록_조회.yml'
+
+  #회원 작성한 글 목록 조회
+  /users/{userNo}/geuls:
+    $ref: './domain/geul/search/회원이_작성한_글_목록_조회.yml'
+
+  #카테고리별 최신글 목록 조회
+  /v1.2/categories/{category}/geuls:
+    $ref: './domain/geul/search/카테고리별_최신글_목록_조회.yml#/v1.2'
+
+  /v1.4/categories/{category}/geuls:
+    $ref: './domain/geul/search/카테고리별_최신글_목록_조회.yml#/v1.4'
+
+  #글 상세조회
+  /v1.2/geuls/{geulNo}:
+    $ref: './domain/geul/search/글_상세조회.yml#/v1.2'
+  #월별 글을 작성한 일자 목록 조회
+  /v1.2/users/{userNo}/days-geul-count-of-month:
+    $ref: './domain/geul/search/월별_글_작성일자_목록_조회.yml#/v1.2'
+
+  ###글 기타 API 목록###
+  #글 등록
+  /geuls:
+    $ref: './domain/geul/글_등록.yml'
+  #글 수정 및 삭제는 글 상세조회에 명시
+
+  ###프로필 API 목록###
+  #회원 작성한 글 목록 조회
+  /v1.2/users/{userNo}/geuls:
+    $ref: './domain/user/profile/작성한_글_목록.yml#/v1.2'
+
+  /v1.4/users/{userNo}/geuls:
+    $ref: './domain/user/profile/작성한_글_목록.yml#/v1.4'
+
+  #회원 프로필 조회
+  /v1.2/users/{userNo}/profile:
+    $ref: './domain/user/profile/프로필_조회.yml#/v1.2'
+
+  #프로필 업데이트
+  /v1.2/users/profile:
+    $ref: './domain/user/profile/프로필_업데이트.yml#/v1.2'
+
+  ###일반 회원 로그인 API 목록###
+  #엑세스, 리프레시 토큰 재발급
+  /user/all-token:
+    $ref: './domain/user/login/general/엑세스_리프레시_토큰_재발급.yml'
+  #일반 회원 로그인
+  /user/auth:
+    $ref: './domain/user/login/general/일반_로그인.yml'
+  #리프레시 토큰을 통해 엑세스 토큰 재발급
+  /user/token:
+    $ref: './domain/user/login/general/엑세스_토큰_재발급.yml'
+  #일반 회원 로그인
+  /v1.1/user/auth:
+    $ref: './domain/user/login/general/일반_로그인.yml#/v1.1'
+  #엑세스, 리프레시 토큰 재발급
+  /v1.2/user/all-token:
+    $ref: './domain/user/login/general/엑세스_리프레시_토큰_재발급.yml#/v1.2'
+  #일반 회원 로그인
+  /v1.2/user/auth:
+    $ref: './domain/user/login/general/일반_로그인.yml#/v1.2'
+  #리프레시 토큰을 통해 엑세스 토큰 재발급
+  /v1.2/user/token:
+    $ref: './domain/user/login/general/엑세스_토큰_재발급.yml#/v1.2'
+
+  ###서드파티 회원 로그인 API 목록###
+  #서드파티 회원 로그인
+  /third-party/user/auth:
+    $ref: './domain/user/login/thirdparty/서드파티_로그인.yml'
+  /v1.1/third-party/user/auth:
+    $ref: './domain/user/login/thirdparty/서드파티_로그인.yml#/v1.1'
+
+  ###회원가입 API 목록###
+  #서드파티 회원가입
+  /third-party/users:
+    $ref: './domain/user/join/회원가입_서드파티.yml'
+  #일반 회원가입
+  /users:
+    $ref: './domain/user/join/회원가입_일반.yml'
+  #이메일 인증 여부 검사
+  /v1.1.2/auth/auth-keys/{authKey}:
+    $ref: './domain/user/join/메일_인증_여부_검사.yml#/v1.1.2'
+  #이메일 인증 메일 전송
+  /v1.1.2/auth/emails/{email}:
+    $ref: './domain/user/join/인증메일_전송.yml#/v1.1.2'
+  #서드파티 회원가입
+  /v1.2/third-party/users:
+    $ref: './domain/user/join/회원가입_서드파티.yml#/v1.2'
+  #일반 회원가입
+  /v1.2/users:
+    $ref: './domain/user/join/회원가입_일반.yml#/v1.2'
+
+  ###회원탈퇴 API 목록###
+  #서드파티 회원 탈퇴
+  /thid-party/users/withdrawal:
+    $ref: './domain/user/withdraw/회원탈퇴_서드파티.yml'
+  #일반 회원 탈퇴
+  /users/withdrawal:
+    $ref: './domain/user/withdraw/회원탈퇴_일반.yml'
+  #일반 회원 탈퇴
+  /v1.2/users/withdrawal:
+    $ref: './domain/user/withdraw/회원탈퇴_일반.yml#/v1.2'
+
+  ###회원 별명 API 목록###
+  #별명 등록
+  /v1.1/users/nicknames:
+    $ref: './domain/user/nickname/별명_등록.yml#/v1.1'
+  #별명 중복 검사
+  /v1.1/users/nicknames/{nickname}:
+    $ref: './domain/user/nickname/별명_중복_검사.yml#/v1.1'
+
+  ###비밀번호 초기화 API 목록###
+  #비밀번호 변경
+  /v1.2/auth/password-initialization:
+    $ref: './domain/user/password/비밀번호_변경.yml#/v1.2'
+  #비밀번호 초기화를 위한 인증번호 확인
+  /v1.2/auth/password-initialization/confirmation:
+    $ref: './domain/user/password/초기화_이메일_인증번호_확인.yml#/v1.2'
+  #비밀번호 초기화를 위한 인증번호 이메일 전송
+  /v1.2/auth/password-initialization/emails/{email}:
+    $ref: './domain/user/password/초기화_이메일_인증번호_전송.yml#/v1.2'
+
+  ###Release Version API 목록###
+  #강제 업데이트 버전 존재 여부
+  /v1.3/current-release-versions/{currentReleaseVersion}/is-exist-forced-update-release-versions:
+    $ref: './domain/service/release/강제_업데이트_버전_존재_여부.yml#/v1.3'
+  #강제 업데이트 버전 캐시 evict
+  /v1.3/release-versions/evict:
+    $ref: './domain/service/release/강제_업데이트_버전_캐시_evict.yml#/v1.3'
+
+  ###공감 API 목록###
+  #공감하기 및 공감 취소하기
+  /geuls/{geulNo}/reaction:
+    $ref: './domain/geul/reaction/공감.yml'
+
+  ###신고 API 목록###
+  #글 신고
+  /geuls/{geulNo}/report:
+    $ref: './domain/geul/report/글_신고.yml'
+
+  #회원 신고
+  /users/{userNo}/report:
+    $ref: './domain/user/report/회원_신고.yml'

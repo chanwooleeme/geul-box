@@ -1,0 +1,85 @@
+post:
+  tags:
+    - "User Join APIs"
+  summary: "서드파티 회원가입"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "KAKAO - Bearer accessToken / APPLE - Bearer idToken"
+      required: true
+      type: "string"
+    - name: "AppleAuthorizationCode"
+      in: "header"
+      description: "APPLE 회원가입시 필요"
+      required: false
+      type: "string"
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ KAKAO, APPLE ]
+    - name: "body"
+      in: "body"
+      required: true
+      schema:
+        $ref: "model.yml#/definitions/ThirdPartyUserJoinRequest"
+  produces:
+    - "application/json"
+  responses:
+    "201":
+      description: "회원가입 성공"
+      schema:
+        $ref: "model.yml#/definitions/ThirdPartyUserJoinResponse"
+    "400":
+      description: "회원 인증 타입 또는 토큰이 NULL 입니다."
+    "402":
+      description: "토큰이 만료됐습니다."
+    "408":
+      description: "가입된 정보가 존재하지 않습니다."
+    "411":
+      description: "유효하지 않은 토큰입니다."
+    "500":
+      description: "서버측 에러"
+
+v1.2:
+  post:
+    tags:
+      - "User Join APIs"
+    summary: "서드파티 회원가입"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "Authorization"
+        in: "header"
+        description: "KAKAO - Bearer accessToken / APPLE - Bearer idToken"
+        required: true
+        type: "string"
+      - name: "AppleAuthorizationCode"
+        in: "header"
+        description: "APPLE 회원가입시 필요"
+        required: false
+        type: "string"
+      - name: "userAuthenticationType"
+        in: query
+        required: true
+        type: string
+        enum: [ KAKAO, APPLE ]
+    produces:
+      - "application/json"
+    responses:
+      "201":
+        description: "회원가입 성공"
+        schema:
+          $ref: "model.yml#/definitions/ThirdPartyUserJoinResponse"
+      "400":
+        description: "회원 인증 타입 또는 토큰이 NULL 입니다."
+      "402":
+        description: "토큰이 만료됐습니다."
+      "408":
+        description: "가입된 정보가 존재하지 않습니다."
+      "411":
+        description: "유효하지 않은 토큰입니다."
+      "500":
+        description: "서버측 에러"

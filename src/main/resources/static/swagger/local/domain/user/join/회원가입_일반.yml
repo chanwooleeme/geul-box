@@ -1,0 +1,55 @@
+post:
+  tags:
+    - "User Join APIs"
+  summary: "일반 회원가입, 만료기간 [accessToken/24시간] [refreshToken/30일]"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL ]
+    - name: "body"
+      in: "body"
+      required: true
+      schema:
+        $ref: "model.yml#/definitions/GeneralUserJoinRequest"
+  produces:
+    - "application/json"
+  responses:
+    "201":
+      description: "회원가입 성공"
+      schema:
+        $ref: "model.yml#/definitions/GeneralUserJoinResponse"
+    "400":
+      description: "회원인증타입이 올바르지 않습니다."
+    "500":
+      description: "서버측 에러"
+
+v1.2:
+  post:
+    tags:
+      - "User Join APIs"
+    summary: "일반 회원가입, 만료기간 [accessToken/24시간] [refreshToken/30일]"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "model.yml#/definitions/GeneralUserJoinRequest"
+    produces:
+      - "application/json"
+    responses:
+      "201":
+        description: "회원가입 성공"
+        schema:
+          $ref: "model.yml#/definitions/GeneralUserJoinResponse"
+      "400":
+        description: "이메일 또는 패스워드가 올바르지 않습니다."
+      "409":
+        description: "이미 가입된 정보가 존재합니다."
+      "500":
+        description: "서버측 에러"

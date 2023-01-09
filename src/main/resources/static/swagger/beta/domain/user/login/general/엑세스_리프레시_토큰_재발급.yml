@@ -1,0 +1,57 @@
+post:
+  tags:
+    - "General User Login APIs"
+  summary: "엑세스, 리프레시 토큰 재발급"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL ]
+    - name: "body"
+      in: "body"
+      required: true
+      schema:
+        $ref: "model.yml#/definitions/Reissuance"
+  produces:
+    - "application/json"
+  responses:
+    "200":
+      description: "재발급 성공"
+      schema:
+        $ref: "model.yml#/definitions/GeneralAllTokenResponse"
+    "400":
+      description: "이메일 또는 패스워드가 공백이거나 회원인증타입이 올바르지않습니다."
+    "401":
+      description: "이메일 또는 패스워드가 올바르지 않습니다."
+    "500":
+      description: "서버측 에러"
+
+v1.2:
+  post:
+    tags:
+      - "General User Login APIs"
+    summary: "엑세스, 리프레시 토큰 재발급"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "model.yml#/definitions/Reissuance"
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "재발급 성공"
+        schema:
+          $ref: "model.yml#/definitions/GeneralAllTokenResponse"
+      "400":
+        description: "이메일 또는 패스워드가 요청에 올바르지 않습니다."
+      "401":
+        description: "이메일 또는 패스워드가 올바르지 않습니다."
+      "500":
+        description: "서버측 에러"

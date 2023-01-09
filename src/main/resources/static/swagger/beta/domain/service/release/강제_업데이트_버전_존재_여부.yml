@@ -1,0 +1,20 @@
+v1.3:
+  get:
+    tags:
+      - "Release Version APIs"
+    summary: "강제 업데이트 버전 존재 여부"
+    produces:
+      - "application/json"
+    parameters:
+      - name: "currentReleaseVersion"
+        in: "path"
+        required: true
+        type: string
+        description: "X.Y.Z 포맷을 지켜야 함"
+    responses:
+      "200":
+        description: "조회 성공"
+        schema:
+          $ref: "model.yml#/definitions/ForcedUpdateReleaseVersionsExistenceResponse"
+      "500":
+        description: "서버측 에러"

@@ -1,0 +1,122 @@
+definitions:
+  ApiHeader:
+    $ref: "http://localhost:8080/swagger/local/domain/common-api.yml#/ApiHeader"
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+  GeulRegisterRequest:
+    type: object
+    required:
+      - geulContent
+      - geulSources
+      - geulCategory
+      - isPrivate
+    properties:
+      geulContent:
+        type: string
+      geulSources:
+        type: string
+      geulAuthor:
+        type: string
+      pageOfBook:
+        type: integer
+      geulCategory:
+        type: string
+        enum:
+          - BOOK
+          - MOVIE
+          - MUSIC
+          - DRAMA
+          - ETC
+      isPrivate:
+        type: boolean
+
+  GeulSearch:
+    type: object
+    properties:
+      geulNo:
+        type: integer
+      user:
+        type: object
+        properties:
+          userNo:
+            type: integer
+          nickname:
+            type: string
+      geulContent:
+        type: string
+      geulSources:
+        type: string
+      geulAuthor:
+        type: string
+      geulCategory:
+        type: string
+      pageOfBook:
+        type: string
+      isPrivate:
+        type: boolean
+      reactionCount:
+        type: integer
+      geulViewCount:
+        type: integer
+      isApproacheduserReacted:
+        type: boolean
+      modifyDateTime:
+        type: string
+      registerDateTime:
+        type: string
+
+  GeulSearchResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/GeulSearch"
+
+  GeulUserGenerateSearchResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/GeulSearch"
+
+  GeulCountOfMonth:
+    type: object
+    properties:
+      year:
+        type: integer
+      month:
+        type: integer
+      days:
+        type: array
+        items:
+          type: integer
+
+  GeulCountOfMonthResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/GeulCountOfMonth"
+
+  GeulCategoryResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+        properties:
+          geuls:
+            type: array
+            items:
+              $ref: "#/definitions/GeulSearch"

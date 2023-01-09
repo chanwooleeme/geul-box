@@ -1,0 +1,27 @@
+ApiHeader:
+  type: object
+  properties:
+    code:
+      type: integer
+    message:
+      type: string
+
+Environment:
+  type: object
+  required:
+    - osType
+    - osVersion
+    - pushToken
+    - appVersion
+  properties:
+    osType:
+      type: string
+      enum:
+        - iOS
+        - ANDROID
+    osVersion:
+      type: string
+    pushToken:
+      type: string
+    appVersion:
+      type: string

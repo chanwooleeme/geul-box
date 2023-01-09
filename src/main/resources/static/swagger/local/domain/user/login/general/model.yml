@@ -1,0 +1,90 @@
+definitions:
+  ApiHeader:
+    $ref: "../../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+
+  Environment:
+    $ref: "../../../common-api.yml#/Environment"
+
+  Reissuance:
+    type: object
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+
+  GeneralAllToken:
+    type: object
+    properties:
+      accessToken:
+        properties:
+          token:
+            type: string
+          exp:
+            type: integer
+      refreshToken:
+        properties:
+          token:
+            type: string
+          exp:
+            type: integer
+
+  GeneralAllTokenResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+    data:
+        $ref: "#/definitions/GeneralAllToken"
+
+  GeneralLogin:
+    type: object
+    properties:
+      userNo:
+        type: integer
+      email:
+        type: string
+      nickname:
+        type: string
+      userAuthenticationType:
+        type: string
+      accessToken:
+        type: string
+      refreshToken:
+        type: string
+
+  GeneralLoginResponse:
+  type: object
+  properties:
+    header:
+      $ref: "#/definitions/ApiHeader"
+    data:
+      $ref: "#/definitions/GeneralLogin"
+
+  AccessTokenFromRefreshToken:
+    type: object
+      properties:
+        token:
+          type: string
+        exp:
+          type: integer
+
+  AccessTokenFromRefreshTokenResponse:
+    type: object
+      properties:
+        header:
+          $ref: "#/definitions/ApiHeader"
+        data:
+          $ref: "#/definitions/AccessTokenFromRefreshToken"
+

@@ -1,0 +1,11 @@
+definitions:
+  ApiHeader:
+    $ref: "../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object

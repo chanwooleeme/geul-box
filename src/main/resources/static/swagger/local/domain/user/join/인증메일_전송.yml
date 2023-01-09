@@ -1,0 +1,23 @@
+v1.1.2:
+  post:
+    tags:
+      - "User Join APIs"
+    summary: "이메일 인증메일 전송 (인증 시간 5분간 유효)"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "email"
+        in: path
+        required: true
+        type: string
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "인증 메일 전송 완료"
+        schema:
+          $ref: "model.yml#/definitions/EmailAuthenticationResponse"
+      "409":
+        description: "이미 가입된 이메일이 존재합니다."
+      "500":
+        description: "서버측 에러"

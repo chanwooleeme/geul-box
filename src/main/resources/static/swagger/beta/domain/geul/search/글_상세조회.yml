@@ -1,0 +1,167 @@
+get:
+  tags:
+    - "Geul Search APIs"
+  summary: "글 상세조회"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "Bearer token"
+      required: true
+      type: "string"
+    - name: "geulNo"
+      in: "path"
+      required: true
+      type: integer
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL, KAKAO, APPLE ]
+  produces:
+    - "application/json"
+  responses:
+    "200":
+      description: "조회 성공"
+      schema:
+        $ref: "model.yml#/definitions/GeulSearchResponse"
+    "400":
+      description: "토큰이 공백값이거나 회원인증타입이 올바르지 않습니다."
+    "403":
+      description: "조회 권한이 없습니다."
+    "500":
+      description: "서버측 에러"
+
+#글 수정
+put:
+  tags:
+    - "Geul ETC APIs"
+  summary: "글 수정"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "Bearer token"
+      required: true
+      type: "string"
+    - name: "geulNo"
+      in: "path"
+      required: true
+      type: integer
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL, KAKAO, APPLE ]
+    - name: "body"
+      in: "body"
+      required: true
+      schema:
+        $ref: "model.yml#/definitions/GeulRegisterRequest"
+  produces:
+    - "application/json"
+  responses:
+    "200":
+      description: "수정 성공"
+    "400":
+      description: "회원 인증 타입 또는 토큰이 NULL 입니다."
+    "401":
+      description: "글을 수정할 수 있는 권한이 없습니다."
+    "402":
+      description: "토큰이 만료됐습니다."
+    "408":
+      description: "가입된 정보가 존재하지 않습니다."
+    "410":
+      description: "존재하지 않는 글입니다."
+    "411":
+      description: "유효하지 않은 토큰입니다."
+    "500":
+      description: "서버측 에러"
+
+#글 삭제
+delete:
+  tags:
+    - "Geul ETC APIs"
+  summary: "글 삭제"
+  consumes:
+    - "application/json"
+  parameters:
+    - name: "Authorization"
+      in: "header"
+      description: "Bearer token"
+      required: true
+      type: "string"
+    - name: "geulNo"
+      in: "path"
+      required: true
+      type: integer
+    - name: "userAuthenticationType"
+      in: query
+      required: true
+      type: string
+      enum: [ GENERAL, KAKAO, APPLE ]
+  produces:
+    - "application/json"
+  responses:
+    "200":
+      description: "삭제 성공"
+      schema:
+        $ref: "model.yml#/definitions/ApiResponse"
+    "400":
+      description: "회원 인증 타입 또는 토큰이 NULL 입니다."
+    "401":
+      description: "글을 삭제할 수 있는 권한이 없습니다."
+    "402":
+      description: "토큰이 만료됐습니다."
+    "408":
+      description: "가입된 정보가 존재하지 않습니다."
+    "410":
+      description: "존재하지 않는 글입니다."
+    "411":
+      description: "유효하지 않은 토큰입니다."
+    "500":
+      description: "서버측 에러"
+
+v1.2:
+  get:
+    tags:
+      - "Geul Search APIs"
+    summary: "글 상세조회"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "Authorization"
+        in: "header"
+        description: "Bearer token"
+        required: true
+        type: "string"
+      - name: "geulNo"
+        in: "path"
+        required: true
+        type: integer
+      - name: "userAuthenticationType"
+        in: query
+        required: true
+        type: string
+        enum: [ GENERAL, KAKAO, APPLE ]
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "조회 성공"
+        schema:
+          $ref: "model.yml#/definitions/GeulSearchResponse"
+      "400":
+        description: "회원 인증 타입 또는 토큰이 NULL 입니다."
+      "401":
+        description: "글을 조회할 수 있는 권한이 없습니다."
+      "402":
+        description: "토큰이 만료됐습니다."
+      "408":
+        description: "가입된 정보가 존재하지 않습니다."
+      "411":
+        description: "유효하지 않은 토큰입니다."
+      "500":
+        description: "서버측 에러"

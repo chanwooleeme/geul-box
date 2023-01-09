@@ -1,0 +1,27 @@
+definitions:
+  ApiHeader:
+    $ref: "../../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+
+  ForcedUpdateReleaseVersionsExistence:
+    type: object
+    required:
+      - isExistForcedUpdateReleaseVersions
+    properties:
+      isExistForcedUpdateReleaseVersions:
+        type: boolean
+
+  ForcedUpdateReleaseVersionsExistenceResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/ForcedUpdateReleaseVersionsExistence"

@@ -1,0 +1,32 @@
+definitions:
+  ApiHeader:
+    $ref: "../../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+
+  UserProfileSaveRequest:
+    type: object
+    required:
+      - nickname
+    properties:
+      nickname:
+        type: string
+      introduction:
+        type: string
+
+  NicknameAlreadyExistResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+        properties:
+          isNicknameAlreadyExist:
+            type: boolean

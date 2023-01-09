@@ -1,0 +1,11 @@
+get:
+  tags:
+    - "Service Status APIs"
+  summary: "서비스 상태 조회"
+  produces:
+    - "application/json"
+  responses:
+    "200":
+      description: "조회 성공"
+    "500":
+      description: "서버측 에러"

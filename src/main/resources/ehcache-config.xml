@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         maxBytesLocalHeap="100M">
+
+    <sizeOfPolicy maxDepth="100000" maxDepthExceededBehavior="continue" />
+
+    <defaultCache
+            timeToLiveSeconds="180"
+            memoryStoreEvictionPolicy="LRU">
+    </defaultCache>
+
+    <cache name="GEUL_DETAIL"
+           timeToLiveSeconds="30"
+           memoryStoreEvictionPolicy="LRU">
+    </cache>
+
+    <cache name="EMAIL_AUTHENTICATION_WAITING"
+           timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LRU">
+    </cache>
+
+    <cache name="EMAIL_AUTHENTICATION_CONFIRMATION"
+           timeToLiveSeconds="180"
+           memoryStoreEvictionPolicy="LRU">
+    </cache>
+
+    <cache name="PASSWORD_INITIALIZATION_AUTHENTICATION_WAITING"
+           timeToLiveSeconds="180"
+           memoryStoreEvictionPolicy="LRU">
+    </cache>
+
+    <cache name="PASSWORD_INITIALIZATION_AUTHENTICATION_CONFIRMATION"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LRU">
+    </cache>
+
+    <cache name="RELEASE_VERSION"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LRU">
+    </cache>
+
+</ehcache>

@@ -1,0 +1,25 @@
+definitions:
+  PasswordInitialization:
+    type: object
+    required:
+      - email
+      - password
+      - authNo
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      authNo:
+        type: string
+
+  PasswordInitializationConfirmation:
+    type: object
+    required:
+      - email
+      - authNo
+    properties:
+      email:
+        type: string
+      authNo:
+        type: string

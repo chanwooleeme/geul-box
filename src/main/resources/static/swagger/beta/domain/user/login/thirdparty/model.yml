@@ -1,0 +1,38 @@
+definitions:
+  ApiHeader:
+    $ref: "../../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+
+  Environment:
+    $ref: "../../../common-api.yml#/Environment"
+
+  ThirdPartyLogin:
+    type: object
+    properties:
+      userNo:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      nickname:
+        type: string
+      userAuthenticationType:
+        type: string
+      refreshToken:
+        type: string
+
+  ThirdPartyLoginResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/ThirdPartyLogin"

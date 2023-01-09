@@ -1,0 +1,23 @@
+v1.2:
+  get:
+    tags:
+      - "Profile APIs"
+    summary: "회원 프로필 조회 (별명, 소개글)"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "userNo"
+        in: "path"
+        required: true
+        type: integer
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "조회 성공"
+        schema:
+          $ref: "model.yml#/definitions/UserProfileResponse"
+      "410":
+        description: "존재하지 않는 회원입니다."
+      "500":
+        description: "서버측 에러"

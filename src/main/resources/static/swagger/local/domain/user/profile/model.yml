@@ -1,0 +1,37 @@
+definitions:
+  ApiHeader:
+    $ref: "../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+
+  UserProfile:
+    type: object
+    properties:
+      nickname:
+        type: string
+      introduction:
+        type: string
+
+  UserProfileResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/UserProfile"
+
+  UserProfileSaveRequest:
+    type: object
+    required:
+      - nickname
+    properties:
+      nickname:
+        type: string
+      introduction:
+        type: string

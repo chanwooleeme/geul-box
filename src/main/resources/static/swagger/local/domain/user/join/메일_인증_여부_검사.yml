@@ -1,0 +1,21 @@
+v1.1.2:
+  post:
+    tags:
+      - "User Join APIs"
+    summary: "이메일 인증 여부 검사 (메일인증 완료 시점부터 3분간 유효)"
+    consumes:
+      - "application/json"
+    parameters:
+      - name: "authKey"
+        in: path
+        required: true
+        type: string
+    produces:
+      - "application/json"
+    responses:
+      "200":
+        description: "이메일 인증 완료"
+      "401":
+        description: "인증 실패"
+      "500":
+        description: "서버측 에러"

@@ -1,0 +1,134 @@
+definitions:
+  ApiHeader:
+    $ref: "../../../common-api.yml#/ApiHeader"
+
+  ApiResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        type: object
+
+  Environment:
+    $ref: "../../../common-api.yml#/Environment"
+
+  ThirdPartyJoin:
+    type: object
+    properties:
+      thirdPartyAccountId:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+      userAuthenticationType:
+        type: string
+
+  GeneralUserJoinRequest:
+    type: object
+    required:
+      - email
+      - password
+      - nickname
+      - osType
+      - osVersion
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      nickname:
+        type: string
+      osType:
+        type: string
+        enum:
+          - iOS
+          - ANDROID
+      osVersion:
+        type: string
+
+  GeneralUserJoin:
+    type: object
+    properties:
+      userNo:
+        type: integer
+      email:
+        type: string
+      nickname:
+        type: string
+      userAuthenticationType:
+        type: string
+      jwtToken:
+        properties:
+          accessToken:
+            type: string
+          refreshToken:
+            type: string
+      accessToken:
+        type: string
+      refreshToken:
+        type: string
+
+  GeneralUserJoinResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/GeneralUserJoin"
+
+  ThirdPartyUserJoin:
+    type: object
+    properties:
+      userNo:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      userAuthenticationType:
+        type: string
+      accessToken:
+        type: string
+      refreshToken:
+        type: string
+
+  ThirdPartyUserJoinRequest:
+    type: object
+      required:
+        - nickname
+        - osType
+        - osVersion
+      properties:
+        nickname:
+          type: string
+        osType:
+          type: string
+          enum:
+            - iOS
+            - ANDROID
+        osVersion:
+          type: string
+
+  ThirdPartyUserJoinResponse:
+    type: object
+      properties:
+        header:
+          $ref: "#/definitions/ApiHeader"
+        data:
+          $ref: "#/definitions/ThirdPartyUserJoin"
+
+  EmailAuthentication:
+    type: object
+    properties:
+      authKey:
+        type: string
+
+  EmailAuthenticationResponse:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/ApiHeader"
+      data:
+        $ref: "#/definitions/EmailAuthenticationResponse"
